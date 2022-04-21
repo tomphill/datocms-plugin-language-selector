@@ -1,3 +1,5 @@
-# [Your plugin name]
+# Language Selector
 
-[Describe what your plugin does, and how users you can configure it! Screenshots are always welcome!]
+The output will be a simple stringified object like:
+
+`{ name: "English", code: "en" }`

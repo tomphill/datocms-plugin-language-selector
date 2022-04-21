@@ -1,5 +1,6 @@
 {
   "name": "datocms-plugin-language-selector",
+  "description": "A simple select field for a list of over 500 languages and regions",
   "version": "0.1.4",
   "files": [
     "build",
