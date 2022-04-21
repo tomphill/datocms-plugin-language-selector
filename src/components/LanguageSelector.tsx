@@ -11,7 +11,7 @@ type Props = {
 const LanguageSelector: FC<Props> = ({ ctx }) => {
   const stringifiedValue = get(ctx.formValues, ctx.fieldPath) as string | null;
   const initialValue = stringifiedValue ? JSON.parse(stringifiedValue) : {};
-  //const initialValue = { name: "Chinese", code: "zh" };
+
   return (
     <Canvas ctx={ctx}>
       <strong>Selected language</strong>
@@ -34,14 +34,23 @@ const LanguageSelector: FC<Props> = ({ ctx }) => {
           }}
         >
           <option value="">None</option>
-          {languages.map((language) => (
-            <option
-              key={`${language.name}${language.code}`}
-              value={`${language.name}${language.code}`}
-            >
-              {language.name} ({language.code})
-            </option>
-          ))}
+          {languages
+            .sort((a, b) => {
+              if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                return 1;
+              } else if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                return -1;
+              }
+              return 0;
+            })
+            .map((language) => (
+              <option
+                key={`${language.name}${language.code}`}
+                value={`${language.name}${language.code}`}
+              >
+                {language.name} ({language.code})
+              </option>
+            ))}
         </select>
       </div>
     </Canvas>
