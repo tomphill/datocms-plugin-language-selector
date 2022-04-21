@@ -1,15 +1,23 @@
 {
   "name": "datocms-plugin-language-selector",
   "version": "0.1.0",
-  "private": true,
+  "files": [
+    "build",
+    "docs"
+  ],
+  "keywords": [
+    "datocms-plugin",
+    "language"
+  ],
   "dependencies": {
     "@types/node": "^16.11.27",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.15",
     "datocms-plugin-sdk": "^0.5.2",
     "datocms-react-ui": "^0.5.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.6.3"
   },
@@ -38,12 +46,13 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "cross-env": "^7.0.3"
   },
   "datoCmsPlugin": {
-    "title": "",
-    "previewImage": "",
-    "coverImage": "",
+    "title": "Language Selector",
+    "previewImage": "docs/preview.png",
+    "coverImage": "docs/cover.png",
     "entryPoint": "build/index.html"
   }
 }
