@@ -14,45 +14,50 @@ const LanguageSelector: FC<Props> = ({ ctx }) => {
 
   return (
     <Canvas ctx={ctx}>
-      <strong>Selected language</strong>
-      <div>
-        <select
-          value={`${initialValue.name}${initialValue.code}`}
-          onChange={(e) => {
-            const newValue = e.target.value;
-            ctx.setFieldValue(
-              ctx.fieldPath,
-              newValue
-                ? JSON.stringify(
-                    languages.find(
-                      (language) =>
-                        newValue === `${language.name}${language.code}`
-                    )
+      <select
+        style={{
+          border: "1px solid var(--border-color)",
+          padding: "var(--spacing-m) var(--spacing-s)",
+          width: "100%",
+          color: "var(--body-color)",
+          fontSize: "var(--font-size-m)",
+          fontFamily: "inherit",
+        }}
+        value={`${initialValue.name}${initialValue.code}`}
+        onChange={(e) => {
+          const newValue = e.target.value;
+          ctx.setFieldValue(
+            ctx.fieldPath,
+            newValue
+              ? JSON.stringify(
+                  languages.find(
+                    (language) =>
+                      newValue === `${language.name}${language.code}`
                   )
-                : null
-            );
-          }}
-        >
-          <option value="">None</option>
-          {languages
-            .sort((a, b) => {
-              if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                return 1;
-              } else if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                return -1;
-              }
-              return 0;
-            })
-            .map((language) => (
-              <option
-                key={`${language.name}${language.code}`}
-                value={`${language.name}${language.code}`}
-              >
-                {language.name} ({language.code})
-              </option>
-            ))}
-        </select>
-      </div>
+                )
+              : null
+          );
+        }}
+      >
+        <option value="">None</option>
+        {languages
+          .sort((a, b) => {
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+              return 1;
+            } else if (a.name.toLowerCase() < b.name.toLowerCase()) {
+              return -1;
+            }
+            return 0;
+          })
+          .map((language) => (
+            <option
+              key={`${language.name}${language.code}`}
+              value={`${language.name}${language.code}`}
+            >
+              {language.name} ({language.code})
+            </option>
+          ))}
+      </select>
     </Canvas>
   );
 };
